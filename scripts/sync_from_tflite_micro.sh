@@ -31,10 +31,14 @@ echo Cloning tflite-micro repo to "${TEMP_DIR}"
 git clone --depth 1 --single-branch "https://github.com/tensorflow/tflite-micro.git"
 cd tflite-micro
 
+cat tensorflow/lite/micro/tools/project_generation/create_tflm_tree.py
+
 
 # Create the TFLM base tree
-python3 tensorflow/lite/micro/tools/project_generation/create_tflm_tree.py \
-  -e hello_world -e micro_speech -e person_detection "${TEMP_DIR}/tflm-out"
+#python3 tensorflow/lite/micro/tools/project_generation/create_tflm_tree.py \
+#  -e hello_world -e micro_speech -e person_detection "${TEMP_DIR}/tflm-out"
+  python3 tensorflow/lite/micro/tools/project_generation/create_tflm_tree.py \
+  -e hello_world "${TEMP_DIR}/tflm-out"
 
 # Backup `micro/kernels/esp_nn` directory to new tree
 /bin/cp -r "${TFLITE_LIB_DIR}"/tensorflow/lite/micro/kernels/esp_nn \
